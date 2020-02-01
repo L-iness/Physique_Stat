@@ -111,18 +111,21 @@ plt.show()
 
 l=[0]
 l_NM = [0]
-n= 10000
+n = 1000
+NM = 100 #100 marcheurs
 
-for j in range(10000) : #100 marcheurs
+for j in range(NM) : #100 marcheurs
     for i in range(n) :
         x= 2*np.random.randint(0,2)-1
         l.append(x)
     s=sum(l)
-    print(s)
     l_NM.append(s)
 
 nl_NM = np.array(l_NM)
-plt.hist(nl_NM)
+plt.hist(nl_NM, align = 'mid')
+plt.xlabel('Distance')
+plt.ylabel('Nombre de marcheurs')
+plt.title('Histogramme des positions finales de 100 marcheurs de 1000 pas sur un réseau à 1D.')
 plt.show()
 
 moy = np.mean(l_NM)
