@@ -91,7 +91,7 @@ for j in range(1000) : #1000 marcheurs
     Tab_NM.append([Tab[-1][-2],Tab[-1][-1]])
 
 nTab_NM = np.array(Tab_NM)
-plt.scatter(nTab_NM[:,0],nTab_NM[:,1])
+plt.scatter(nTab_NM[:,0],nTab_NM[:,1],color='orange')
 plt.show()
 
 for j in range(10000) : #10000 marcheurs
@@ -103,7 +103,7 @@ for j in range(10000) : #10000 marcheurs
     Tab_NM.append([Tab[-1][-2],Tab[-1][-1]])
 
 nTab_NM = np.array(Tab_NM)
-plt.scatter(nTab_NM[:,0],nTab_NM[:,1])
+plt.scatter(nTab_NM[:,0],nTab_NM[:,1],color='purple')
 plt.show()
 
 
@@ -138,7 +138,7 @@ l_NM=np.sum(l, axis = 0)
 
 
 nl_NM = np.array(l_NM)
-plt.hist(nl_NM, align = 'mid')
+plt.hist(nl_NM, align = 'mid', color = 'orange')
 plt.xlabel('Distance')
 plt.ylabel('Nombre de marcheurs')
 plt.title('Histogramme des positions finales de 1000 marcheurs de 1000 pas sur un réseau à 1D')
@@ -160,7 +160,7 @@ l_NM=np.sum(l, axis = 0)
 
 
 nl_NM = np.array(l_NM)
-plt.hist(nl_NM, align = 'mid')
+plt.hist(nl_NM, align = 'mid', color = 'purple')
 plt.xlabel('Distance')
 plt.ylabel('Nombre de marcheurs')
 plt.title('Histogramme des positions finales de 10000 marcheurs de 1000 pas sur un réseau à 1D')
