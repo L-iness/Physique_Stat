@@ -120,7 +120,7 @@ nl_NM = np.array(l_NM)
 plt.hist(nl_NM, align = 'mid')
 plt.xlabel('Distance')
 plt.ylabel('Nombre de marcheurs')
-plt.title('Histogramme des positions finales de 100 marcheurs de 1000 pas sur un réseau à 1D.')
+plt.title('Histogramme des positions finales de 100 marcheurs de 1000 pas sur un réseau à 1D')
 plt.show()
 
 moy = np.mean(l_NM)
@@ -141,7 +141,7 @@ nl_NM = np.array(l_NM)
 plt.hist(nl_NM, align = 'mid')
 plt.xlabel('Distance')
 plt.ylabel('Nombre de marcheurs')
-plt.title('Histogramme des positions finales de 1000 marcheurs de 1000 pas sur un réseau à 1D.')
+plt.title('Histogramme des positions finales de 1000 marcheurs de 1000 pas sur un réseau à 1D')
 plt.show()
 
 moy = np.mean(l_NM)
@@ -163,7 +163,7 @@ nl_NM = np.array(l_NM)
 plt.hist(nl_NM, align = 'mid')
 plt.xlabel('Distance')
 plt.ylabel('Nombre de marcheurs')
-plt.title('Histogramme des positions finales de 10000 marcheurs de 1000 pas sur un réseau à 1D.')
+plt.title('Histogramme des positions finales de 10000 marcheurs de 1000 pas sur un réseau à 1D')
 plt.show()
 
 moy = np.mean(l_NM)
@@ -174,14 +174,26 @@ print("Ecart-type =",ecart,"\nMoyenne =", moy)
 
 #%% Bloc 5
 
+NM= np.zeros((100,10000))
+NM[50,0] = 1
+Tab_NM = [[]]
+p = 0.01
 
-
-
-
-
-
-
-
+for t in range(1,10000):
+    for i in range(100):
+        NM[i,t] = NM[i,t-1] - 2*p*NM[i, t-1]
+        if i != 0:
+            NM[i,t] = NM[i,t] + p*NM[i-1,t-1]
+            if i != 99:
+                NM[i,t] = NM[i,t] + p*NM[i+1,t-1]
+            else :
+                NM[i,t] = NM[i,t] + p*NM[i-1,t-1]
+        
+   
+plt.plot(NM[:,0]/max(NM[:,0]))
+plt.plot(NM[:,4999]/max(NM[:,4999]))
+plt.plot(NM[:,-1]/max(NM[:,-1]))
+plt.show()
 
 
 
