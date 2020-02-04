@@ -33,7 +33,7 @@ n= 1000
 
 
 for i in range(n) :
-    angle=2*np.pi*np.random.rand(1)
+    angle=2*np.pi*np.random.rand(1)#Norme 1
     x=np.cos(angle)+Tab[-1][-2]
     y=np.sin(angle)+Tab[-1][-1]
     Tab.append([x,y])
@@ -72,7 +72,7 @@ n= 1000
 
 for j in range(100) : #100 marcheurs
     for i in range(n) :
-        angle= np.random.choice([np.pi/4,3*np.pi/4,-np.pi/4,-3*np.pi/4])
+        angle= np.random.choice([np.pi/4,3*np.pi/4,-np.pi/4,-3*np.pi/4]) #Déplacement en diagonale uniquement
         x=np.cos(angle)+Tab[-1][-2]
         y=np.sin(angle)+Tab[-1][-1]
         Tab.append([x,y])
@@ -179,8 +179,8 @@ NM[50,0] = 1
 Tab_NM = [[]]
 p = 0.01
 
-for t in range(1,10000):
-    for i in range(100):
+for t in range(1,10000): #Pas de temps
+    for i in range(100): #Position
         NM[i,t] = NM[i,t-1] - 2*p*NM[i, t-1]
         if i != 0:
             NM[i,t] = NM[i,t] + p*NM[i-1,t-1]
@@ -194,8 +194,4 @@ plt.plot(NM[:,0]/max(NM[:,0]))
 plt.plot(NM[:,4999]/max(NM[:,4999]))
 plt.plot(NM[:,-1]/max(NM[:,-1]))
 plt.show()
-
-
-
-
 
