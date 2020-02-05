@@ -10,7 +10,7 @@ import numpy as np
 
 #%% Bloc 1 Q1
 Tab=[[0,0]]
-n= 100 #Nb pas
+n= 1000 #Nb pas
 
 for i in range(n) :
     x= 2*np.random.rand(1)-1 #Valeur random entre -1 et 1
@@ -69,6 +69,8 @@ plt.show()
 Tab=[[0,0]]
 Tab_NM = [[0,0]]
 n= 1000
+sn=[]
+l_x=[]
 
 for j in range(100) : #100 marcheurs
     for i in range(n) :
@@ -77,10 +79,20 @@ for j in range(100) : #100 marcheurs
         y=np.sin(angle)+Tab[-1][-1]
         Tab.append([x,y])
     Tab_NM.append([Tab[-1][-2],Tab[-1][-1]])
+    l_x.append(Tab[-1][-2])
 
-nTab_NM = np.array(Tab_NM)
-plt.scatter(nTab_NM[:,0],nTab_NM[:,1])
-plt.show()
+
+
+sn = [nb*nb for nb in l_x]
+rms = np.sqrt(np.sum(sn)/100)
+print("RMS :", rms)
+
+
+#nTab_NM = np.array(Tab_NM)
+#plt.scatter(nTab_NM[:,0],nTab_NM[:,1])
+#plt.show()
+
+"""
 
 for j in range(1000) : #1000 marcheurs
     for i in range(n) :
@@ -89,10 +101,21 @@ for j in range(1000) : #1000 marcheurs
         y=np.sin(angle)+Tab[-1][-1]
         Tab.append([x,y])
     Tab_NM.append([Tab[-1][-2],Tab[-1][-1]])
+    l_x.append(Tab[-1][-2])
+    
+for a in range(1000) :
+    sn.append(l_x[a]**2)
+    
+    
+rms = np.sqrt(np.sum(sn)/1000**2)
+print("RMS :", rms)
 
-nTab_NM = np.array(Tab_NM)
-plt.scatter(nTab_NM[:,0],nTab_NM[:,1],color='orange')
-plt.show()
+
+#nTab_NM = np.array(Tab_NM)
+#plt.scatter(nTab_NM[:,0],nTab_NM[:,1],color='orange')
+#plt.show()
+
+
 
 for j in range(10000) : #10000 marcheurs
     for i in range(n) :
@@ -101,11 +124,20 @@ for j in range(10000) : #10000 marcheurs
         y=np.sin(angle)+Tab[-1][-1]
         Tab.append([x,y])
     Tab_NM.append([Tab[-1][-2],Tab[-1][-1]])
+    l_x.append(Tab[-1][-2])
+    
+for a in range(10000) :
+    sn.append(l_x[a]**2)
+    
+    
+rms = np.sqrt(np.sum(sn)/10000**2)
+print("RMS :", rms)
 
-nTab_NM = np.array(Tab_NM)
-plt.scatter(nTab_NM[:,0],nTab_NM[:,1],color='purple')
-plt.show()
 
+#nTab_NM = np.array(Tab_NM)
+#plt.scatter(nTab_NM[:,0],nTab_NM[:,1],color='purple')
+#plt.show()
+"""
 
 #%% Bloc 4
 
@@ -117,7 +149,7 @@ l = 2*np.random.randint(0,2, size=(n,NM))-1
 l_NM=np.sum(l, axis = 0)
 
 nl_NM = np.array(l_NM)
-plt.hist(nl_NM, align = 'mid')
+plt.hist(nl_NM, align = 'mid', bins = 200)
 plt.xlabel('Distance')
 plt.ylabel('Nombre de marcheurs')
 plt.title('Histogramme des positions finales de 100 marcheurs de 1000 pas sur un réseau à 1D')
@@ -138,7 +170,7 @@ l_NM=np.sum(l, axis = 0)
 
 
 nl_NM = np.array(l_NM)
-plt.hist(nl_NM, align = 'mid', color = 'orange')
+plt.hist(nl_NM, align = 'mid', color = 'orange', bins = 200)
 plt.xlabel('Distance')
 plt.ylabel('Nombre de marcheurs')
 plt.title('Histogramme des positions finales de 1000 marcheurs de 1000 pas sur un réseau à 1D')
@@ -160,7 +192,7 @@ l_NM=np.sum(l, axis = 0)
 
 
 nl_NM = np.array(l_NM)
-plt.hist(nl_NM, align = 'mid', color = 'purple')
+plt.hist(nl_NM, align = 'mid', color = 'purple', bins = 200)
 plt.xlabel('Distance')
 plt.ylabel('Nombre de marcheurs')
 plt.title('Histogramme des positions finales de 10000 marcheurs de 1000 pas sur un réseau à 1D')
@@ -194,4 +226,3 @@ plt.plot(NM[:,0]/max(NM[:,0]))
 plt.plot(NM[:,4999]/max(NM[:,4999]))
 plt.plot(NM[:,-1]/max(NM[:,-1]))
 plt.show()
-
