@@ -69,8 +69,7 @@ plt.show()
 Tab=[[0,0]]
 Tab_NM = [[0,0]]
 n= 1000
-sn=[]
-l_x=[]
+
 
 for j in range(100) : #100 marcheurs
     for i in range(n) :
@@ -79,18 +78,16 @@ for j in range(100) : #100 marcheurs
         y=np.sin(angle)+Tab[-1][-1]
         Tab.append([x,y])
     Tab_NM.append([Tab[-1][-2],Tab[-1][-1]])
-    l_x.append(Tab[-1][-2])
+
+nTab_NM = np.array(Tab_NM)
+plt.scatter(nTab_NM[:,0],nTab_NM[:,1])
+plt.show()
 
 
+#Calcul RMS (aide de Quentin)
 
-sn = [nb*nb for nb in l_x]
-rms = np.sqrt(np.sum(sn)/100)
-print("RMS :", rms)
-
-
-#nTab_NM = np.array(Tab_NM)
-#plt.scatter(nTab_NM[:,0],nTab_NM[:,1])
-#plt.show()
+rms = np.sqrt(np.sum(np.sum((np.random.randint(2,size=(2,n,100))*2-1)/np.sqrt(2), axis=1)**2, axis=0).mean())
+print("RMS =", rms)
 
 """
 
